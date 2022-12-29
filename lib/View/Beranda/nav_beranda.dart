@@ -3,14 +3,12 @@ import 'dart:developer';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_color_models/flutter_color_models.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:midtrans_sdk/midtrans_sdk.dart';
 import 'package:sipapparong_mobile/Model/model_pembayaran_home.dart';
-import 'package:sipapparong_mobile/Provider/provider_home.dart';
-import 'package:sipapparong_mobile/WIdget/widget.dart';
 
+import '../../Provider/provider_home.dart';
+import '../../WIdget/widget.dart';
 import '../../constant.dart';
-import '../Tagihan/Bayar Tagihan/informasi_produk.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class NavBeranda extends StatefulWidget {
@@ -23,12 +21,11 @@ class NavBeranda extends StatefulWidget {
 class _NavBerandaState extends State<NavBeranda> {
   HomeProvider homeProvider = HomeProvider();
   var isLoading = false;
-  LatestMonthlyBill latestMonthlyBill = LatestMonthlyBill();
-  List<BoxShadow> shadowList = [
-    BoxShadow(color: Colors.grey[300]!, blurRadius: 30, offset: Offset(0, 10))
-  ];
+  var cek = "";
 
   User user = User();
+  Zone zone = Zone();
+  LatestMonthlyBill latestMonthlyBill = LatestMonthlyBill();
   MidtransSDK? midtransSDK;
   @override
   void initState() {
@@ -40,20 +37,15 @@ class _NavBerandaState extends State<NavBeranda> {
   void initSDK() async {
     midtransSDK = await MidtransSDK.init(
         config: MidtransConfig(
-            clientKey: dotenv.env['MIDTRANS_CLIENT_KEY']!,
-            merchantBaseUrl: dotenv.env['MIDTRANS_BASE_URL']!,
-            // colorTheme: ColorTheme(
-            //   colorPrimary: Theme.of(context).colorScheme.secondary,
-            //   colorPrimaryDark: Theme.of(context).colorScheme.secondary,
-            //   colorSecondary: Theme.of(context).colorScheme.secondary,
-            // ),
-            enableLog: true));
+      clientKey: dotenv.env['MIDTRANS_CLIENT_KEY']!,
+      merchantBaseUrl: dotenv.env['MIDTRANS_BASE_URL']!,
+    ));
     midtransSDK?.setUIKitCustomSetting(
       skipCustomerDetailsPages: true,
     );
 
     midtransSDK!.setTransactionFinishedCallback((result) {
-      print('Transaction finished: $result');
+      print('connect');
     });
   }
 
@@ -70,7 +62,11 @@ class _NavBerandaState extends State<NavBeranda> {
     var data = await homeProvider.getDataHome();
     setState(() {
       user = User.fromJson(data['user']);
-      // latestMonthlyBill = LatestMonthlyBill.fromJson(data['latest_monthly_bill']);
+      zone = Zone.fromJson(data['zone']);
+      latestMonthlyBill =
+          LatestMonthlyBill.fromJson(data['latest_monthly_bill']);
+      cek = latestMonthlyBill.snapToken.toString();
+
       isLoading = false;
     });
   }
@@ -116,7 +112,7 @@ class _NavBerandaState extends State<NavBeranda> {
         radius: Radius.circular(12),
         color: Colors.grey,
         child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
+          borderRadius: const BorderRadius.all(Radius.circular(12)),
           child: Container(
             height: 100,
             width: MediaQueryData.fromWindow(WidgetsBinding.instance.window)
@@ -126,17 +122,20 @@ class _NavBerandaState extends State<NavBeranda> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Tagihan Terakhir Anda',
                   style: TextStyle(
                       color: Colors.grey,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  'Rp. 250.000',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+                isLoading
+                    ? loadingText()
+                    : Text(
+                        latestMonthlyBill.totalInRupiah.toString(),
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
               ],
             ),
           ),
@@ -146,112 +145,125 @@ class _NavBerandaState extends State<NavBeranda> {
   }
 
   Widget buildDataPembayaran() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      child: Card(
-        color: Colors.grey.shade200,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: DottedBorder(
-            color: Colors.grey.shade300,
-            child: Column(
+    return DottedBorder(
+      color: Colors.grey.shade300,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                buildJumlahTagihan(),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Nomor Tagihan : '),
-                      Text('1234567890'),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Volume Sampah : '),
-                      Text('10 m3'),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Pengangkutan Sampah Rumah Tangga'),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Zona 1 - Lorong/Gang/Setapak'),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Industri Rumah Tangga Kecil'),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Tarif Rp. 25.000/m3 '),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 150,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            midtransSDK?.startPaymentUiFlow(
-                              token: '1f34b6d4-bd07-4fc2-8bd2-d966f7a1ce80',
-                            );
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => InformasiProduk(),
-                            //   ),
-                            // );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: colorButton,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: const Text(
-                            'Bayar Tagihan',
-                            style: TextStyle(fontSize: 15),
-                          ),
+                isLoading
+                    ? loadingText()
+                    : Text(
+                        'Bulan : ${latestMonthlyBill.dateInMonthYear}',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
+              ],
+            ),
+          ),
+          buildJumlahTagihan(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Nomor Tagihan : '),
+                isLoading
+                    ? loadingText()
+                    : Text(latestMonthlyBill.number.toString()),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Volume Sampah : '),
+                isLoading ? loadingText() : Text(zone.volume.toString()),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                isLoading
+                    ? loadingText()
+                    : Text(zone.transportationType.toString()),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                isLoading ? loadingText() : Text(zone.transportZone.toString()),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                isLoading ? loadingText() : Text(user.address.toString()),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                isLoading ? loadingText() : Text(zone.rateInRupiah.toString()),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 150,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      midtransSDK?.startPaymentUiFlow(
+                        token: latestMonthlyBill.snapToken.toString(),
+                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => InformasiProduk(),
+                      //   ),
+                      // );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: colorButton,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: const Text(
+                      'Bayar Tagihan',
+                      style: TextStyle(fontSize: 15),
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -265,7 +277,7 @@ class _NavBerandaState extends State<NavBeranda> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            padding: EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.only(left: 20),
             width: MediaQuery.of(context).size.width * 0.7,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -302,16 +314,18 @@ class _NavBerandaState extends State<NavBeranda> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               right: 20,
             ),
             width: MediaQuery.of(context).size.width * 0.3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
+                // ignore: prefer_const_constructors
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage('asset/images/default.png'),
+                  backgroundImage: const AssetImage('asset/images/default.png'),
                   backgroundColor: Colors.white,
                 ),
               ],
@@ -354,7 +368,21 @@ class _NavBerandaState extends State<NavBeranda> {
                   topRight: Radius.circular(30),
                 ),
               ),
-              child: buildDataPembayaran(),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Card(
+                  color: Colors.grey.shade200,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: cek.isNotEmpty
+                        ? buildDataPembayaran()
+                        : isLoading
+                            ? buildDataPembayaran()
+                            : buildTidakAdaTagihan(),
+                  ),
+                ),
+              ),
             ),
             // buildDataPembayaran(),
           ],
@@ -362,4 +390,33 @@ class _NavBerandaState extends State<NavBeranda> {
       )),
     );
   }
+}
+
+buildTidakAdaTagihan() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Column(
+        children: [
+          Image.asset(
+            'asset/images/tagihan-lunas.png',
+            width: 200,
+            height: 200,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const Text(
+            'Tidak Ada Tagihan',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Poppins',
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
 }

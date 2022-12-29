@@ -20,19 +20,19 @@ class _NavTagihanState extends State<NavTagihan> {
   var isLoading = false;
   var cek = "";
   var datas = [];
-  Datum data = Datum(
-      id: 0,
-      userId: 0,
-      number: '',
-      date: DateTime.now(),
-      total: 0,
-      snapToken: '',
-      orderId: '',
-      paidStatus: '',
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
-      totalInRupiah: '',
-      dateInMonthYear: '');
+  // Datum data = Datum(
+  //     id: 0,
+  //     userId: 0,
+  //     number: '',
+  //     date: DateTime.now(),
+  //     snapToken: '',
+  //     orderId: '',
+  //     total: 0,
+  //     paidStatus: '',
+  //     createdAt: DateTime.now(),
+  //     updatedAt: DateTime.now(),
+  //     totalInRupiah: '',
+  //     dateInMonthYear: '');
 
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _NavTagihanState extends State<NavTagihan> {
       isLoading = true;
     });
     var data = await tagihanProvider.getListTagihan();
-    // log(data["data"][0]["number"].toString());
+    log(data["data"][0]["number"].toString());
     datas = data["data"];
     setState(() {
       isLoading = false;
@@ -89,8 +89,8 @@ class _NavTagihanState extends State<NavTagihan> {
                               number: datas[index]["number"],
                               date: datas[index]["date"],
                               total: datas[index]["total"],
-                              snapToken: datas[index]["snap_token"],
-                              orderId: datas[index]["order_id"],
+                              snapToken: datas[index]["snap_token"].toString(),
+                              orderId: datas[index]["order_id"].toString(),
                               paidStatus: datas[index]["paid_status"],
                               totalInRupiah: datas[index]["total_in_rupiah"],
                               dateInMonthYear: datas[index]

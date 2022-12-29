@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: token  == false ? FormLogin() : BottomNavigation(),
+      home: token == false ? FormLogin() : BottomNavigation(),
     ));
   }
 
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
           width: 200,
           height: 200,
           child: Center(
-            child: Image.asset('asset/images/logo_red.png'),
+            child: Image.asset('asset/images/logo-splash-screen.png'),
           ),
         ),
       ),

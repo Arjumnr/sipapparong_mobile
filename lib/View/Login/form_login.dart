@@ -93,7 +93,7 @@ class _FormLoginState extends State<FormLogin> {
                                     width: 100,
                                     height: 100,
                                     child: Image.asset(
-                                        'asset/images/logo_white.png')),
+                                        'asset/images/logo-login.png')),
                                 const SizedBox(height: 30.0),
                                 buildNOPPBB(),
                                 const SizedBox(height: 30.0),
