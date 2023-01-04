@@ -16,10 +16,10 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
 
   // ignore: prefer_final_fields
-  List _pages = [
-    NavBeranda(),
-    NavTagihan(),
-    NavProfile(),
+  final List _pages = [
+    const NavBeranda(),
+    const NavTagihan(),
+    const NavProfile(),
   ];
 
   int _selectedIndex = 0;

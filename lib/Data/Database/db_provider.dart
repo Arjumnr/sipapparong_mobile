@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:developer';
 
 class DatabaseProvider {
   //
@@ -17,7 +18,7 @@ class DatabaseProvider {
     SharedPreferences value = await _pref;
     value.setString('token', token);
     value.setString('expToken', expToken);
-    print('on Save T');
+    log('on Save T');
     var data = [];
     data.add(token);
     data.add(expToken);
@@ -52,15 +53,15 @@ class DatabaseProvider {
       var splitDateExp = getExpToken?.split('.')[0];
       var dateExpToString = splitDateExp.toString();
       var dateExp = DateTime.parse(dateExpToString);
-      print('dateExp: $dateExp');
-      print('dateNow: $dateNow');
+      log('dateExp: $dateExp');
+      log('dateNow: $dateNow');
       if (dateNow.isBefore(dateExp)) {
         return true;
       } else {
         return false;
       }
     } else {
-      print('kosong');
+      log('kosong');
       return false;
     }
   }

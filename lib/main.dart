@@ -27,7 +27,6 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
-        // ChangeNotifierProvider(create: (_) => LoginProvider()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
