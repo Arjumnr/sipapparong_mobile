@@ -56,7 +56,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        // applicationId "com.example.sipapparong_mobile"
+        // applicationId "com.bontoala.retribusi.app"
         applicationId "com.bontoala.retribusi.app"
         // minSdkVersion flutter.minSdkVersion
         minSdkVersion 21

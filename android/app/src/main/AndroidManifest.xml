@@ -1,12 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bontoala.retribusi.app" xmlns:tools="http://schemas.android.com/tools">
+    package="com.bontoala.retribusi.app"
+    xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:label="Sipappa'rong"
         tools:replace="android:label"
         android:theme="@style/AppTheme"
-        android:name="{applicationName}"
+        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
