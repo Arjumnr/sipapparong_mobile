@@ -1,6 +1,7 @@
 
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:midtrans_sdk/midtrans_sdk.dart';
@@ -48,7 +49,6 @@ class _DetailTagihanState extends State<DetailTagihan> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initSDK();
     getData();
@@ -65,7 +65,9 @@ class _DetailTagihanState extends State<DetailTagihan> {
     );
 
     midtransSDK!.setTransactionFinishedCallback((result) {
-      print('connect');
+      if (kDebugMode) {
+        print('connect');
+      }
     });
   }
 
@@ -104,7 +106,7 @@ class _DetailTagihanState extends State<DetailTagihan> {
             )),
         centerTitle: true,
         elevation: 0.00,
-        backgroundColor: colorAPP_BARrgb,
+        backgroundColor: colorAPPBARrgb,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           color: Colors.white,
@@ -187,7 +189,7 @@ class _DetailTagihanState extends State<DetailTagihan> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: DataPembayaran(),
+                        child: dataPembayaran(),
                       ),
                     ],
                   ),
@@ -212,7 +214,7 @@ class _DetailTagihanState extends State<DetailTagihan> {
     );
   }
 
-  Widget DataPembayaran() {
+  Widget dataPembayaran() {
     return Column(
       children: [
         DottedBorder(
@@ -320,7 +322,7 @@ class _DetailTagihanState extends State<DetailTagihan> {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: colorAPP_BARrgb,
+                              backgroundColor: colorAPPBARrgb,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),

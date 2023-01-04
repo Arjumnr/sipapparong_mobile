@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Data/Database/db_provider.dart';
-import '../Data/service.dart';
+import 'package:sipapparong_mobile/Data/Database/db_provider.dart';
+import 'package:sipapparong_mobile/Data/service.dart';
 
 enum Status { Uninitialized, Authenticated, Authenticating, Unauthenticated }
 

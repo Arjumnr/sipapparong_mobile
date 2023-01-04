@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_color_models/flutter_color_models.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
-import '../../Provider/provider_auth.dart';
+import '../../Provider/provider_auth.dart' show AuthProvider, Status;
 import '../../WIdget/field_input.dart';
 import '../../WIdget/notification.dart';
 import '../../bottom_navigation.dart';

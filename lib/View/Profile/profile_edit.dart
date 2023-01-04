@@ -1,24 +1,14 @@
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:sipapparong_mobile/Data/service.dart';
 import 'package:sipapparong_mobile/Provider/provider_auth.dart';
 import 'package:sipapparong_mobile/View/Profile/nav_profile.dart';
 import 'package:sipapparong_mobile/WIdget/notification.dart';
-import 'package:sipapparong_mobile/bottom_navigation.dart';
 import 'package:sipapparong_mobile/constant.dart';
-
-import '../../Data/Database/db_provider.dart';
 import '../../Model/model_user.dart';
 import '../../Provider/provider_profile.dart';
 import '../../Widget/widget.dart';
 
-import 'package:http/http.dart' as http;
-
 class EditProfile extends StatefulWidget {
-  EditProfile({Key? key}) : super(key: key);
+  const EditProfile({Key? key}) : super(key: key);
 
   @override
   State<EditProfile> createState() => _EditProfileState();
@@ -80,9 +70,9 @@ class _EditProfileState extends State<EditProfile> {
         ),
         centerTitle: true,
         elevation: 0.00,
-        backgroundColor: colorAPP_BARrgb,
+        backgroundColor: colorAPPBARrgb,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           color: Colors.white,
           onPressed: () {
             Navigator.pop(
@@ -115,7 +105,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -202,7 +192,7 @@ class _EditProfileState extends State<EditProfile> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 2,
@@ -216,11 +206,11 @@ class _EditProfileState extends State<EditProfile> {
               validator: (value) =>
                   value!.isEmpty ? 'Alamat tidak boleh kosong' : null,
               keyboardType: TextInputType.emailAddress,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontFamily: 'OpenSans',
               ),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
@@ -260,7 +250,7 @@ class _EditProfileState extends State<EditProfile> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 2,
@@ -274,11 +264,11 @@ class _EditProfileState extends State<EditProfile> {
               keyboardType: TextInputType.emailAddress,
               validator: (value) =>
                   value!.isEmpty ? 'Email tidak boleh kosong' : null,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontFamily: 'OpenSans',
               ),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
@@ -318,7 +308,7 @@ class _EditProfileState extends State<EditProfile> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 2,
@@ -332,11 +322,11 @@ class _EditProfileState extends State<EditProfile> {
               validator: (value) =>
                   value!.isEmpty ? 'No. Telepon tidak boleh kosong' : null,
               keyboardType: TextInputType.emailAddress,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontFamily: 'OpenSans',
               ),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(

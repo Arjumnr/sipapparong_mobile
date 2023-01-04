@@ -6,13 +6,12 @@ import 'package:sipapparong_mobile/View/Profile/profile_edit.dart';
 import 'package:sipapparong_mobile/WIdget/widget.dart';
 import 'package:sipapparong_mobile/constant.dart';
 import 'package:sipapparong_mobile/Provider/provider_profile.dart';
-
 import '../../Data/Database/db_provider.dart';
 import '../../Model/model_user.dart';
 import '../Login/form_login.dart';
 
 class NavProfile extends StatefulWidget {
-  NavProfile({Key? key}) : super(key: key);
+  const NavProfile({Key? key}) : super(key: key);
 
   @override
   State<NavProfile> createState() => _NavProfileState();
@@ -70,7 +69,7 @@ class _NavProfileState extends State<NavProfile> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: colorAPP_BARrgb,
+        backgroundColor: colorAPPBARrgb,
         elevation: 0,
         actions: [
           IconButton(
@@ -79,7 +78,7 @@ class _NavProfileState extends State<NavProfile> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EditProfile(),
+                  builder: (context) => const EditProfile(),
                 ),
               );
             },
@@ -111,7 +110,7 @@ class _NavProfileState extends State<NavProfile> {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding:const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -194,7 +193,7 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -207,8 +206,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailNoHP() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
+      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
@@ -218,7 +216,7 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -231,7 +229,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailAlamat() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
@@ -242,7 +240,7 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -255,7 +253,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailJenisAngkutan() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
@@ -266,7 +264,7 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -279,7 +277,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailZonaAngkutan() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
@@ -290,7 +288,7 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -303,7 +301,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailDetailAngkutan() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
@@ -314,7 +312,7 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
@@ -327,7 +325,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailTarif() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
@@ -337,20 +335,21 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
+        width: 400,
         child: ListTile(
           title: Text(
             zone.rateInRupiah.toString(),
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,
               color: Colors.black,
             ),
           ),
-          subtitle: Text(
+          subtitle: const Text(
             'Tarif',
             style: TextStyle(
               fontSize: 15,
@@ -358,16 +357,15 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey,
             ),
           ),
-          leading: Icon(Icons.money),
+          leading: const Icon(Icons.money),
         ),
-        width: 400,
       ),
     );
   }
 
   Widget buildDetailVolume() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
@@ -377,20 +375,21 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
+        width: 400,
         child: ListTile(
           title: Text(
             zone.volume.toString(),
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,
               color: Colors.black,
             ),
           ),
-          subtitle: Text(
+          subtitle: const Text(
             'Volume Sampah',
             style: TextStyle(
               fontSize: 15,
@@ -398,16 +397,15 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey,
             ),
           ),
-          leading: Icon(Icons.gif_box),
+          leading: const Icon(Icons.gif_box),
         ),
-        width: 400,
       ),
     );
   }
 
   Widget buildDetailTagihan() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
@@ -417,20 +415,21 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
         ),
+        width: 400,
         child: ListTile(
           title: Text(
             zone.monthlyBillInRupiah.toString(),
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,
               color: Colors.black,
             ),
           ),
-          subtitle: Text(
+          subtitle: const Text(
             'Tagihan Perbulan',
             style: TextStyle(
               fontSize: 15,
@@ -438,9 +437,8 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey,
             ),
           ),
-          leading: Icon(Icons.shopping_cart),
+          leading: const Icon(Icons.shopping_cart),
         ),
-        width: 400,
       ),
     );
   }

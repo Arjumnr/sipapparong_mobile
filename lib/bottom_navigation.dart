@@ -27,41 +27,38 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: RgbColor(63, 13, 18),
-      bottomNavigationBar: Container(
-        // decoration:  ,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: GNav(
-            backgroundColor: RgbColor(63, 13, 18),
-            color: Colors.white,
-            activeColor: Colors.white,
-            tabBackgroundColor: Colors.grey.shade800,
-            padding: EdgeInsets.all(16),
-            gap: 8,
-            onTabChange: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-            tabs: [
-              GButton(
-                icon: Icons.home,
-                text: 'Beranda',
-              ),
-              GButton(
-                icon: Icons.receipt_long,
-                text: 'Tagihan',
-              ),
-              GButton(
-                icon: Icons.person,
-                text: 'Profile',
-              ),
-            
-            ],
-          ),
+      backgroundColor: const RgbColor(63, 13, 18),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        child: GNav(
+          backgroundColor: const RgbColor(63, 13, 18),
+          color: Colors.white,
+          activeColor: Colors.white,
+          tabBackgroundColor: Colors.grey.shade800,
+          padding:  const EdgeInsets.all(16),
+          gap: 8,
+          onTabChange: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          tabs: const [
+             GButton(
+              icon: Icons.home,
+              text: 'Beranda',
+            ),
+            GButton(
+              icon: Icons.receipt_long,
+              text: 'Tagihan',
+            ),
+            GButton(
+              icon: Icons.person,
+              text: 'Profile',
+            ),
           
+          ],
         ),
+        
       ),
       body: _pages.elementAt(_selectedIndex),
     );

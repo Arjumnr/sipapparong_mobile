@@ -4,12 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_color_models/flutter_color_models.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sipapparong_mobile/View/Tagihan/tagihan_detail.dart';
-
-import '../../Model/model_tagihan.dart';
 import '../../Provider/provider_tagihan.dart';
 
 class NavTagihan extends StatefulWidget {
-  NavTagihan({Key? key}) : super(key: key);
+  const NavTagihan({Key? key}) : super(key: key);
 
   @override
   State<NavTagihan> createState() => _NavTagihanState();
@@ -67,7 +65,7 @@ class _NavTagihanState extends State<NavTagihan> {
             ),
           ),
           centerTitle: true,
-          backgroundColor: RgbColor(63, 13, 18),
+          backgroundColor: const RgbColor(63, 13, 18),
           elevation: 0,
         ),
         body: SingleChildScrollView(

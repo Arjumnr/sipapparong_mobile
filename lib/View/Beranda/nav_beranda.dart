@@ -1,18 +1,18 @@
-import 'dart:developer';
+
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_color_models/flutter_color_models.dart';
 import 'package:midtrans_sdk/midtrans_sdk.dart';
 import 'package:sipapparong_mobile/Model/model_pembayaran_home.dart';
+import 'package:sipapparong_mobile/Provider/provider_home.dart';
+import 'package:sipapparong_mobile/WIdget/widget.dart';
 
-import '../../Provider/provider_home.dart';
-import '../../WIdget/widget.dart';
 import '../../constant.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class NavBeranda extends StatefulWidget {
-  NavBeranda({Key? key}) : super(key: key);
+  const NavBeranda({Key? key}) : super(key: key);
 
   @override
   State<NavBeranda> createState() => _NavBerandaState();
@@ -39,14 +39,23 @@ class _NavBerandaState extends State<NavBeranda> {
         config: MidtransConfig(
       clientKey: dotenv.env['MIDTRANS_CLIENT_KEY']!,
       merchantBaseUrl: dotenv.env['MIDTRANS_BASE_URL']!,
+      colorTheme: ColorTheme(
+        colorPrimary: HsbColor.fromHex('#30475E'),
+        colorPrimaryDark: HsbColor.fromHex('#30475E'),
+      ),
+
     ));
+    
+
     midtransSDK?.setUIKitCustomSetting(
       skipCustomerDetailsPages: true,
+
     );
 
     midtransSDK!.setTransactionFinishedCallback((result) {
       print('connect');
     });
+    
   }
 
   @override
@@ -60,6 +69,7 @@ class _NavBerandaState extends State<NavBeranda> {
       isLoading = true;
     });
     var data = await homeProvider.getDataHome();
+
     setState(() {
       user = User.fromJson(data['user']);
       zone = Zone.fromJson(data['zone']);
@@ -109,7 +119,7 @@ class _NavBerandaState extends State<NavBeranda> {
       padding: const EdgeInsets.all(8.0),
       child: DottedBorder(
         borderType: BorderType.RRect,
-        radius: Radius.circular(12),
+        radius: const Radius.circular(12),
         color: Colors.grey,
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(12)),
@@ -152,18 +162,16 @@ class _NavBerandaState extends State<NavBeranda> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                isLoading
-                    ? loadingText()
-                    : Text(
-                        'Bulan : ${latestMonthlyBill.dateInMonthYear}',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                isLoading ? loadingText() : Text(
+                  'Bulan : ${latestMonthlyBill.dateInMonthYear}',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,    
+                  ),
+                ),
               ],
             ),
           ),
