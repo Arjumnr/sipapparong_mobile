@@ -133,14 +133,14 @@ class _FormLoginState extends State<FormLogin> {
         const SizedBox(height: 10),
         buildTextFormField(
           controller: _npwrController,
-          textInputType: TextInputType.number,
+          textInputType: TextInputType.text,
           validator: (value) {
             if (value!.isEmpty) {
               return 'NPWR tidak boleh kosong';
             }
             return null;
           },
-          hintText: ' ex : 71.B.10.5.1-0342',
+          hintText: ' contoh: 71.X.99.9.9-9999',
           icon: Icons.app_registration,
         ),
       ],

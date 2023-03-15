@@ -180,20 +180,77 @@ class _NavProfileState extends State<NavProfile> {
     );
   }
 
+  // Widget buildEditNoHp() {
+  //   return Padding(
+  //     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         const Text(
+  //           'No. Telepon',
+  //           style: TextStyle(
+  //             color: Colors.black,
+  //             fontSize: 16,
+  //             fontWeight: FontWeight.bold,
+  //           ),
+  //         ),
+  //         const SizedBox(height: 10),
+  //         Container(
+  //           alignment: Alignment.centerLeft,
+  //           decoration: BoxDecoration(
+  //             color: Colors.white,
+  //             borderRadius: BorderRadius.circular(10),
+  //             boxShadow: const [
+  //               BoxShadow(
+  //                 color: Colors.black26,
+  //                 blurRadius: 2,
+  //                 offset: Offset(0, 2),
+  //               ),
+  //             ],
+  //           ),
+  //           height: 60,
+  //           child: TextFormField(
+  //             controller: _noHpController,
+  //             validator: (value) =>
+  //                 value!.isEmpty ? 'No. Telepon tidak boleh kosong' : null,
+  //             keyboardType: TextInputType.number,
+  //             style: const TextStyle(
+  //               color: Colors.black87,
+  //               fontFamily: 'OpenSans',
+  //             ),
+  //             decoration: const InputDecoration(
+  //               border: InputBorder.none,
+  //               contentPadding: EdgeInsets.only(top: 14),
+  //               prefixIcon: Icon(
+  //                 Icons.add_ic_call,
+  //                 color: Colors.black,
+  //               ),
+  //               hintText: '',
+  //               hintStyle: TextStyle(
+  //                 color: Colors.black38,
+  //                 fontFamily: 'OpenSans',
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
   Widget buildDetailProfileEmail() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -209,14 +266,13 @@ class _NavProfileState extends State<NavProfile> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -237,14 +293,13 @@ class _NavProfileState extends State<NavProfile> {
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -261,14 +316,13 @@ class _NavProfileState extends State<NavProfile> {
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -285,14 +339,13 @@ class _NavProfileState extends State<NavProfile> {
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -309,14 +362,13 @@ class _NavProfileState extends State<NavProfile> {
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -332,14 +384,13 @@ class _NavProfileState extends State<NavProfile> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -372,14 +423,13 @@ class _NavProfileState extends State<NavProfile> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -412,14 +462,13 @@ class _NavProfileState extends State<NavProfile> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
