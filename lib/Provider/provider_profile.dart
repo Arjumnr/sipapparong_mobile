@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -6,15 +7,15 @@ import '../Data/Database/db_provider.dart';
 import '../Data/service.dart';
 
 class ProfileProvider extends ChangeNotifier {
-  DatabaseProvider _databaseProvider = DatabaseProvider();
+  final DatabaseProvider _databaseProvider = DatabaseProvider();
   // DataUser dataUser = DataUser();
   var result, token, url;
 
   getDataProfile() async {
     token = await _databaseProvider.getToken();
     if (token != null) {
-      print('Ada T ');
-      // print(token);
+      log('Ada T ');
+      // log(token);
       url = Uri.parse(GET_PROFILE);
       http.Response res = await http.get(
         url,
@@ -24,7 +25,7 @@ class ProfileProvider extends ChangeNotifier {
           "Authorization": "Bearer $token ",
         },
       );
-      // print(jsonDecode(res.body));
+      // log(jsonDecode(res.body));
       if (res.statusCode == 200) {
         result = jsonDecode(res.body)['data'];
 
@@ -39,8 +40,8 @@ class ProfileProvider extends ChangeNotifier {
   updateProfile(String email, noHp, address, BuildContext context) async {
     token = await _databaseProvider.getToken();
     if (token != null) {
-      print('Ada T ');
-      // print(token);
+      log('Ada T ');
+      // log(token);
       url = Uri.parse(UPDATE_PROFILE);
       var header = {
         "Content-type": "application/json",

@@ -9,13 +9,13 @@ import '../../WIdget/notification.dart';
 import '../../bottom_navigation.dart';
 
 class FormLogin extends StatefulWidget {
-  FormLogin({Key? key}) : super(key: key);
+  const FormLogin({Key? key}) : super(key: key);
 
   @override
   State<FormLogin> createState() => _FormLoginState();
 }
 
-final TextEditingController _nopPbbController = TextEditingController();
+final TextEditingController _npwrController = TextEditingController();
 final TextEditingController _passwordController = TextEditingController();
 
 class _FormLoginState extends State<FormLogin> {
@@ -27,7 +27,7 @@ class _FormLoginState extends State<FormLogin> {
   doLogin() {
     if (formKey.currentState!.validate()) {
       authProvider
-          .login(_nopPbbController.text, _passwordController.text, context)
+          .login(_npwrController.text, 'password', context)
           .then((value) {
         if (authProvider.loggedInStatus == Status.Authenticated) {
           notifSuccess('Login Berhasil').show(context).then((value) =>
@@ -88,16 +88,16 @@ class _FormLoginState extends State<FormLogin> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                     width: 100,
                                     height: 100,
                                     child: Image.asset(
                                         'asset/images/logo-login.png')),
                                 const SizedBox(height: 30.0),
-                                buildNOPPBB(),
+                                buildNPWR(),
                                 const SizedBox(height: 30.0),
-                                buildPassword(),
-                                const SizedBox(height: 30.0),
+                                // buildPassword(),
+                                // const SizedBox(height: 30.0),
                                 buildButtonLogin(),
                                 Padding(
                                     padding: EdgeInsets.only(
@@ -118,73 +118,12 @@ class _FormLoginState extends State<FormLogin> {
         ));
   }
 
-  buildPassword() {
+  buildNPWR() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Password',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
-        TextFormField(
-          controller: _passwordController,
-          autofocus: false,
-          obscureText: _isObscure,
-          validator: (value) {
-            if (value!.isEmpty) {
-              return 'Password tidak boleh kosong';
-            }
-            return null;
-          },
-          decoration: InputDecoration(
-            fillColor: Colors.white,
-            filled: true,
-            contentPadding: const EdgeInsets.only(top: 14),
-            prefixIcon: const Icon(
-              Icons.lock,
-              color: Colors.black,
-            ),
-            hintText: 'Masukkan Password',
-            hintStyle: const TextStyle(
-              color: Colors.black38,
-              fontFamily: 'OpenSans',
-            ),
-            suffixIcon: IconButton(
-              color: Colors.grey,
-              icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
-              onPressed: () {
-                setState(() {
-                  _isObscure = !_isObscure;
-                });
-              },
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(color: Colors.white),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(
-                color: Colors.red,
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  buildNOPPBB() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'NOP PBB',
+          'NPWR',
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -193,20 +132,87 @@ class _FormLoginState extends State<FormLogin> {
         ),
         const SizedBox(height: 10),
         buildTextFormField(
-          controller: _nopPbbController,
+          controller: _npwrController,
           textInputType: TextInputType.number,
           validator: (value) {
             if (value!.isEmpty) {
-              return 'NOP PBB tidak boleh kosong';
+              return 'NPWR tidak boleh kosong';
             }
             return null;
           },
-          hintText: 'Masukkan NOP PBB',
+          hintText: ' ex : 71.B.10.5.1-0342',
           icon: Icons.app_registration,
         ),
       ],
     );
   }
+
+  // buildPassword() {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       const Text(
+  //         'Password',
+  //         style: TextStyle(
+  //           color: Colors.white,
+  //           fontSize: 16,
+  //           fontWeight: FontWeight.bold,
+  //         ),
+  //       ),
+  //       const SizedBox(height: 10),
+  //       TextFormField(
+  //         controller: _passwordController,
+  //         autofocus: false,
+  //         obscureText: _isObscure,
+  //         validator: (value) {
+  //           if (value!.isEmpty) {
+  //             return 'Password tidak boleh kosong';
+  //           }
+  //           return null;
+  //         },
+  //         decoration: InputDecoration(
+  //           hintText: 'Masukkan Password',
+  //           hintStyle: const TextStyle(
+  //             color: Colors.black38,
+  //             fontFamily: 'OpenSans',
+  //           ),
+  //           prefixIcon: const Icon(
+  //             Icons.lock,
+  //             color: Colors.black,
+  //           ),
+  //           fillColor: Colors.white,
+  //           filled: true,
+  //           contentPadding: const EdgeInsets.only(top: 14),
+  //           enabledBorder: OutlineInputBorder(
+  //             borderSide: const BorderSide(
+  //               color: Colors.white,
+  //             ),
+  //             borderRadius: BorderRadius.circular(10),
+  //           ),
+  //           focusedBorder: OutlineInputBorder(
+  //             borderSide: const BorderSide(
+  //               color: Colors.white,
+  //             ),
+  //             borderRadius: BorderRadius.circular(10),
+  //           ),
+  //           suffixIcon: IconButton(
+  //             color: Colors.grey,
+  //             icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
+  //             onPressed: () {
+  //               setState(() {
+  //                 _isObscure = !_isObscure;
+  //               });
+  //             },
+  //           ),
+  //           border: OutlineInputBorder(
+  //             borderRadius: BorderRadius.circular(15),
+  //             borderSide: const BorderSide(color: Colors.white),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   buildButtonLogin() {
     return Container(

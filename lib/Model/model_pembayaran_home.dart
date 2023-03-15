@@ -7,17 +7,17 @@ class ModelHome {
 
   ModelHome.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
     message = json['message'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['success'] = success;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -30,38 +30,38 @@ class Data {
   Data({this.user, this.zone, this.latestMonthlyBill});
 
   Data.fromJson(Map<String, dynamic> json) {
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
-    zone = json['zone'] != null ? new Zone.fromJson(json['zone']) : null;
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
+    zone = json['zone'] != null ? Zone.fromJson(json['zone']) : null;
     latestMonthlyBill = json['latest_monthly_bill'] != null
-        ? new LatestMonthlyBill.fromJson(json['latest_monthly_bill'])
+        ? LatestMonthlyBill.fromJson(json['latest_monthly_bill'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
-    if (this.zone != null) {
-      data['zone'] = this.zone!.toJson();
+    if (zone != null) {
+      data['zone'] = zone!.toJson();
     }
-    if (this.latestMonthlyBill != null) {
-      data['latest_monthly_bill'] = this.latestMonthlyBill!.toJson();
+    if (latestMonthlyBill != null) {
+      data['latest_monthly_bill'] = latestMonthlyBill!.toJson();
     }
     return data;
   }
 }
 
 class User {
-  String? nopPbb;
+  String? npwr;
   String? name;
   String? email;
   String? address;
   String? phoneNumber;
-  int? wasteVolume;
+  String? wasteVolume;
 
   User(
-      {this.nopPbb,
+      {this.npwr,
       this.name,
       this.email,
       this.address,
@@ -69,7 +69,7 @@ class User {
       this.wasteVolume});
 
   User.fromJson(Map<String, dynamic> json) {
-    nopPbb = json['nop_pbb'];
+    npwr = json['npwr'];
     name = json['name'];
     email = json['email'];
     address = json['address'];
@@ -78,13 +78,13 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nop_pbb'] = this.nopPbb;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['address'] = this.address;
-    data['phone_number'] = this.phoneNumber;
-    data['waste_volume'] = this.wasteVolume;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['npwr'] = npwr;
+    data['name'] = name;
+    data['email'] = email;
+    data['address'] = address;
+    data['phone_number'] = phoneNumber;
+    data['waste_volume'] = wasteVolume;
     return data;
   }
 }
@@ -112,20 +112,18 @@ class Zone {
     transportZone = json['transport_zone'];
     rateInNumber = json['rate_in_number'];
     rateInRupiah = json['rate_in_rupiah'];
-    volume = json['volume'];
     monthlyBillInNumber = json['monthly_bill_in_number'];
     monthlyBillInRupiah = json['monthly_bill_in_rupiah'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['transportation_type'] = this.transportationType;
-    data['transport_zone'] = this.transportZone;
-    data['rate_in_number'] = this.rateInNumber;
-    data['rate_in_rupiah'] = this.rateInRupiah;
-    data['volume'] = this.volume;
-    data['monthly_bill_in_number'] = this.monthlyBillInNumber;
-    data['monthly_bill_in_rupiah'] = this.monthlyBillInRupiah;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['transportation_type'] = transportationType;
+    data['transport_zone'] = transportZone;
+    data['rate_in_number'] = rateInNumber;
+    data['rate_in_rupiah'] = rateInRupiah;
+    data['monthly_bill_in_number'] = monthlyBillInNumber;
+    data['monthly_bill_in_rupiah'] = monthlyBillInRupiah;
     return data;
   }
 }
@@ -162,15 +160,15 @@ class LatestMonthlyBill {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['number'] = this.number;
-    data['date'] = this.date;
-    data['total_in_number'] = this.totalInNumber;
-    data['total_in_rupiah'] = this.totalInRupiah;
-    data['snap_token'] = this.snapToken;
-    data['order_id'] = this.orderId;
-    data['paid_status'] = this.paidStatus;
-    data['date_in_month_year'] = this.dateInMonthYear;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['number'] = number;
+    data['date'] = date;
+    data['total_in_number'] = totalInNumber;
+    data['total_in_rupiah'] = totalInRupiah;
+    data['snap_token'] = snapToken;
+    data['order_id'] = orderId;
+    data['paid_status'] = paidStatus;
+    data['date_in_month_year'] = dateInMonthYear;
     return data;
   }
 }

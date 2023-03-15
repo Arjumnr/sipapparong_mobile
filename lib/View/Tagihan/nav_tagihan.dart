@@ -43,7 +43,7 @@ class _NavTagihanState extends State<NavTagihan> {
       isLoading = true;
     });
     var data = await tagihanProvider.getListTagihan();
-    log(data["data"][0]["number"].toString());
+    // log(data["data"][0]["number"].toString());
     datas = data["data"];
     setState(() {
       isLoading = false;

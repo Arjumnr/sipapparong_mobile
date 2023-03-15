@@ -1,5 +1,3 @@
-
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -229,22 +227,22 @@ class _DetailTagihanState extends State<DetailTagihan> {
             ),
           ),
         ),
-        DottedBorder(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('Volume Sampah : '),
-                isLoading
-                    ? loadingText()
-                    : Text(
-                        zone.volume.toString(),
-                      ),
-              ],
-            ),
-          ),
-        ),
+        // DottedBorder(
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(8.0),
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //       children: [
+        //         const Text('Volume Sampah : '),
+        //         isLoading
+        //             ? loadingText()
+        //             : Text(
+        //                 zone.volume.toString(),
+        //               ),
+        //       ],
+        //     ),
+        //   ),
+        // ),
         DottedBorder(
           child: Padding(
             padding: const EdgeInsets.all(8.0),

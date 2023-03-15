@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:sipapparong_mobile/Data/service.dart';
@@ -6,7 +7,6 @@ import 'package:sipapparong_mobile/Data/service.dart';
 import '../Data/Database/db_provider.dart';
 import 'package:http/http.dart' as http;
 
-import '../Data/service copy.dart';
 
 class TagihanProvider extends ChangeNotifier {
   DatabaseProvider databaseProvider = DatabaseProvider();
@@ -14,9 +14,9 @@ class TagihanProvider extends ChangeNotifier {
 
   getListTagihan() async {
     token = await databaseProvider.getToken();
-    // print(token);
+    // log(token);
     if (token != null) {
-      print('Ada T ');
+      log('Ada T ');
 
       url = Uri.parse(GET_HISTORY);
       http.Response res = await http.get(
@@ -27,7 +27,7 @@ class TagihanProvider extends ChangeNotifier {
           "Authorization": "Bearer $token ",
         },
       );
-      // print(jsonDecode(res.body));
+      // log(jsonDecode(res.body));
       if (res.statusCode == 200) {
         result = jsonDecode(res.body)['data'];
 

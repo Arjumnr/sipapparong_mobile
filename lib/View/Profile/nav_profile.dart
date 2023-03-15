@@ -110,7 +110,7 @@ class _NavProfileState extends State<NavProfile> {
               ),
             ),
             Container(
-              padding:const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -129,7 +129,7 @@ class _NavProfileState extends State<NavProfile> {
                   isLoading
                       ? loadingText()
                       : Text(
-                          'NopPbb : ${userModel.nopPbb.toString()}',
+                          'NPWR : ${userModel.npwr.toString()}',
                           style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -159,7 +159,7 @@ class _NavProfileState extends State<NavProfile> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => FormLogin(),
+              builder: (context) => const FormLogin(),
             ),
           );
         },
@@ -190,7 +190,7 @@ class _NavProfileState extends State<NavProfile> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -206,14 +206,14 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailNoHP() {
     return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -222,14 +222,18 @@ class _NavProfileState extends State<NavProfile> {
         ),
         width: 400,
         child: buildListProfile(
-            userModel.phoneNumber.toString(), 'Nomor Telepon', Icons.add_ic_call),
+            userModel.phoneNumber.toString() == 'null'
+                ? '-'
+                : userModel.phoneNumber.toString(),
+            'Nomor Telepon',
+            Icons.add_ic_call),
       ),
     );
   }
 
   Widget buildDetailAlamat() {
     return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
@@ -237,7 +241,7 @@ class _NavProfileState extends State<NavProfile> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -253,7 +257,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailJenisAngkutan() {
     return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
@@ -261,7 +265,7 @@ class _NavProfileState extends State<NavProfile> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -277,7 +281,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailZonaAngkutan() {
     return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
@@ -285,7 +289,7 @@ class _NavProfileState extends State<NavProfile> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -301,7 +305,7 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailDetailAngkutan() {
     return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // child: buildDetailUserProfile(user.name, 'Name',EditNameProfile() ),
       child: Container(
         decoration: BoxDecoration(
@@ -309,7 +313,7 @@ class _NavProfileState extends State<NavProfile> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -325,14 +329,14 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailTarif() {
     return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -365,14 +369,14 @@ class _NavProfileState extends State<NavProfile> {
 
   Widget buildDetailVolume() {
     return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -382,7 +386,7 @@ class _NavProfileState extends State<NavProfile> {
         width: 400,
         child: ListTile(
           title: Text(
-            zone.volume.toString(),
+            userModel.wasteVolume.toString(),
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,
@@ -397,7 +401,7 @@ class _NavProfileState extends State<NavProfile> {
               color: Colors.grey,
             ),
           ),
-          leading: const Icon(Icons.gif_box),
+          leading: const Icon(Icons.photo_size_select_small),
         ),
       ),
     );
@@ -412,7 +416,7 @@ class _NavProfileState extends State<NavProfile> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(0.3),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -442,6 +446,4 @@ class _NavProfileState extends State<NavProfile> {
       ),
     );
   }
-
-  
 }

@@ -1,4 +1,4 @@
-
+import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -43,19 +43,15 @@ class _NavBerandaState extends State<NavBeranda> {
         colorPrimary: HsbColor.fromHex('#30475E'),
         colorPrimaryDark: HsbColor.fromHex('#30475E'),
       ),
-
     ));
-    
 
     midtransSDK?.setUIKitCustomSetting(
       skipCustomerDetailsPages: true,
-
     );
 
     midtransSDK!.setTransactionFinishedCallback((result) {
-      print('connect');
+      log('connect');
     });
-    
   }
 
   @override
@@ -73,9 +69,17 @@ class _NavBerandaState extends State<NavBeranda> {
     setState(() {
       user = User.fromJson(data['user']);
       zone = Zone.fromJson(data['zone']);
-      latestMonthlyBill =
-          LatestMonthlyBill.fromJson(data['latest_monthly_bill']);
-      cek = latestMonthlyBill.snapToken.toString();
+
+      // log(user.npwr.toString());
+      if (data['latest_monthly_bill'].isEmpty) {
+        log('is empty');
+        cek = "";
+      } else {
+        latestMonthlyBill =
+            LatestMonthlyBill.fromJson(data['latest_monthly_bill']);
+        cek = latestMonthlyBill.snapToken.toString();
+      }
+      // jika data kosong
 
       isLoading = false;
     });
@@ -164,14 +168,16 @@ class _NavBerandaState extends State<NavBeranda> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                isLoading ? loadingText() : Text(
-                  'Bulan : ${latestMonthlyBill.dateInMonthYear}',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,    
-                  ),
-                ),
+                isLoading
+                    ? loadingText()
+                    : Text(
+                        'Bulan : ${latestMonthlyBill.dateInMonthYear}',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
               ],
             ),
           ),
@@ -188,16 +194,16 @@ class _NavBerandaState extends State<NavBeranda> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('Volume Sampah : '),
-                isLoading ? loadingText() : Text(zone.volume.toString()),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       const Text('Volume Sampah : '),
+          //       isLoading ? loadingText() : Text(zone.volume.toString()),
+          //     ],
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -249,12 +255,6 @@ class _NavBerandaState extends State<NavBeranda> {
                       midtransSDK?.startPaymentUiFlow(
                         token: latestMonthlyBill.snapToken.toString(),
                       );
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => InformasiProduk(),
-                      //   ),
-                      // );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorButton,
@@ -310,7 +310,7 @@ class _NavBerandaState extends State<NavBeranda> {
                 isLoading
                     ? loadingText()
                     : Text(
-                        "NOPBPP : ${user.nopPbb.toString()}",
+                        "NPWR : ${user.npwr.toString()}",
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,
@@ -347,13 +347,13 @@ class _NavBerandaState extends State<NavBeranda> {
   @override
   Widget build(BuildContext context) {
     // var fullHeight = MediaQuery.of(context).size.height;
-    // print('fullHeight: $fullHeight');
+    // log('fullHeight: $fullHeight');
     // var peddingTop = MediaQuery.of(context).padding.top;
-    // print('peddingTop: $peddingTop');
+    // log('peddingTop: $peddingTop');
     // var heightAPPBAR = AppBar().preferredSize.height;
-    // print('heightUpAPPBAR: $heightAPPBAR');
+    // log('heightUpAPPBAR: $heightAPPBAR');
     // var totHeight = fullHeight - heightAPPBAR - peddingTop;
-    // print('totHeight: $totHeight');
+    // log('totHeight: $totHeight');
     // Orientation orientation = MediaQuery.of(context).orientation;
 
     return Scaffold(

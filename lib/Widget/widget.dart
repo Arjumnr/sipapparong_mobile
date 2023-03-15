@@ -12,7 +12,6 @@ InputDecoration buildInputDecoration(String hintText, IconData icon) {
       icon,
       color: Colors.black,
     ),
-
     fillColor: Colors.white,
     filled: true,
     contentPadding: const EdgeInsets.only(top: 14),
@@ -27,6 +26,10 @@ InputDecoration buildInputDecoration(String hintText, IconData icon) {
         color: Colors.white,
       ),
       borderRadius: BorderRadius.circular(10),
+    ),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: const BorderSide(color: Colors.white),
     ),
   );
 }

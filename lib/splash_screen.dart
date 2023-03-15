@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: token == false ? FormLogin() : BottomNavigation(),
+      home: token == false ? const FormLogin() : const BottomNavigation(),
     ));
   }
 

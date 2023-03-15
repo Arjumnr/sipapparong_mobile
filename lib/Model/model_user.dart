@@ -7,17 +7,17 @@ class DataUser {
 
   DataUser.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
     message = json['message'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['success'] = success;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['message'] = this.message;
+    data['message'] = message;
     return data;
   }
 }
@@ -29,17 +29,17 @@ class Data {
   Data({this.user, this.zone});
 
   Data.fromJson(Map<String, dynamic> json) {
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
-    zone = json['zone'] != null ? new Zone.fromJson(json['zone']) : null;
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
+    zone = json['zone'] != null ? Zone.fromJson(json['zone']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
-    if (this.zone != null) {
-      data['zone'] = this.zone!.toJson();
+    if (zone != null) {
+      data['zone'] = zone!.toJson();
     }
     return data;
   }
@@ -47,15 +47,15 @@ class Data {
 
 class User {
   String? name;
-  String? nopPbb;
+  String? npwr;
   String? email;
   String? address;
   String? phoneNumber;
-  int? wasteVolume;
+  String? wasteVolume;
 
   User(
       {this.name,
-      this.nopPbb,
+      this.npwr,
       this.email,
       this.address,
       this.phoneNumber,
@@ -63,7 +63,7 @@ class User {
 
   User.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    nopPbb = json['nop_pbb'];
+    npwr = json['npwr'];
     email = json['email'];
     address = json['address'];
     phoneNumber = json['phone_number'];
@@ -71,13 +71,13 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['nop_pbb'] = this.nopPbb;
-    data['email'] = this.email;
-    data['address'] = this.address;
-    data['phone_number'] = this.phoneNumber;
-    data['waste_volume'] = this.wasteVolume;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['npwr'] = npwr;
+    data['email'] = email;
+    data['address'] = address;
+    data['phone_number'] = phoneNumber;
+    data['waste_volume'] = wasteVolume;
     return data;
   }
 }
@@ -87,7 +87,6 @@ class Zone {
   String? transportZone;
   int? rateInNumber;
   String? rateInRupiah;
-  String? volume;
   int? monthlyBillInNumber;
   String? monthlyBillInRupiah;
 
@@ -96,7 +95,6 @@ class Zone {
       this.transportZone,
       this.rateInNumber,
       this.rateInRupiah,
-      this.volume,
       this.monthlyBillInNumber,
       this.monthlyBillInRupiah});
 
@@ -105,20 +103,18 @@ class Zone {
     transportZone = json['transport_zone'];
     rateInNumber = json['rate_in_number'];
     rateInRupiah = json['rate_in_rupiah'];
-    volume = json['volume'];
     monthlyBillInNumber = json['monthly_bill_in_number'];
     monthlyBillInRupiah = json['monthly_bill_in_rupiah'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['transportation_type'] = this.transportationType;
-    data['transport_zone'] = this.transportZone;
-    data['rate_in_number'] = this.rateInNumber;
-    data['rate_in_rupiah'] = this.rateInRupiah;
-    data['volume'] = this.volume;
-    data['monthly_bill_in_number'] = this.monthlyBillInNumber;
-    data['monthly_bill_in_rupiah'] = this.monthlyBillInRupiah;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['transportation_type'] = transportationType;
+    data['transport_zone'] = transportZone;
+    data['rate_in_number'] = rateInNumber;
+    data['rate_in_rupiah'] = rateInRupiah;
+    data['monthly_bill_in_number'] = monthlyBillInNumber;
+    data['monthly_bill_in_rupiah'] = monthlyBillInRupiah;
     return data;
   }
 }

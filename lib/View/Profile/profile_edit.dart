@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sipapparong_mobile/Provider/provider_auth.dart';
+import 'package:sipapparong_mobile/View/Beranda/nav_beranda.dart';
 import 'package:sipapparong_mobile/View/Profile/nav_profile.dart';
 import 'package:sipapparong_mobile/WIdget/notification.dart';
 import 'package:sipapparong_mobile/constant.dart';
 import '../../Model/model_user.dart';
 import '../../Provider/provider_profile.dart';
 import '../../Widget/widget.dart';
+import '../../bottom_navigation.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -38,7 +40,9 @@ class _EditProfileState extends State<EditProfile> {
       userModel = User.fromJson(dataUser['user']);
       isLoading = false;
       _emailController.text = userModel.email.toString();
-      _noHpController.text = userModel.phoneNumber.toString();
+      _noHpController.text = userModel.phoneNumber.toString() == 'null'
+          ? ''
+          : userModel.phoneNumber.toString();
       _alamatController.text = userModel.address.toString();
     });
   }
@@ -50,9 +54,11 @@ class _EditProfileState extends State<EditProfile> {
               _alamatController.text, context)
           .then((value) {
         if (value == true) {
-          notifSuccess('Berhasil Ubah Profile')
-              .show(context)
-              .then((value) => Navigator.pop(context));
+          notifSuccess('Berhasil Ubah Profile').show(context).then((value) =>
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BottomNavigation())));
         } else {
           notifError('Gagal Ubah Profile').show(context);
         }
@@ -75,14 +81,14 @@ class _EditProfileState extends State<EditProfile> {
           icon: const Icon(Icons.arrow_back_ios),
           color: Colors.white,
           onPressed: () {
-            Navigator.pop(
-                context, MaterialPageRoute(builder: (context) => NavProfile()));
+            Navigator.pop(context,
+                MaterialPageRoute(builder: (context) => const NavProfile()));
           },
         ),
       ),
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Column(
@@ -124,7 +130,7 @@ class _EditProfileState extends State<EditProfile> {
                       isLoading
                           ? loadingText()
                           : Text(
-                              'NopPbb : ${userModel.nopPbb.toString()}',
+                              'NPWR : ${userModel.npwr.toString()}',
                               style: const TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
@@ -205,7 +211,7 @@ class _EditProfileState extends State<EditProfile> {
               controller: _alamatController,
               validator: (value) =>
                   value!.isEmpty ? 'Alamat tidak boleh kosong' : null,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.text,
               style: const TextStyle(
                 color: Colors.black87,
                 fontFamily: 'OpenSans',
@@ -321,7 +327,7 @@ class _EditProfileState extends State<EditProfile> {
               controller: _noHpController,
               validator: (value) =>
                   value!.isEmpty ? 'No. Telepon tidak boleh kosong' : null,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.number,
               style: const TextStyle(
                 color: Colors.black87,
                 fontFamily: 'OpenSans',

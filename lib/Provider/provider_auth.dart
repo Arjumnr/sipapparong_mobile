@@ -30,17 +30,16 @@ class AuthProvider extends ChangeNotifier {
 
   Future<Map<String, dynamic>> login(
       String nopPbb, String pass, BuildContext context) async {
-    
-    var result, token,expToken;
+    var result, token, expToken;
     final url = Uri.parse(LOGIN);
-    
+
     _loggedInStatus = Status.Authenticating;
     notifyListeners();
 
     http.Response res = await http.post(
       url,
       body: {
-        'nop_pbb': nopPbb,
+        'npwr': nopPbb,
         'password': pass,
       },
     );

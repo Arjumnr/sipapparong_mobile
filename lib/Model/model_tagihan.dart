@@ -177,13 +177,13 @@ class Link {
   String toJson() => json.encode(toMap());
 
   factory Link.fromMap(Map<String, dynamic> json) => Link(
-        url: json["url"] == null ? null : json["url"],
+        url: json["url"],
         label: json["label"],
         active: json["active"],
       );
 
   Map<String, dynamic> toMap() => {
-        "url": url == null ? null : url,
+        "url": url,
         "label": label,
         "active": active,
       };
